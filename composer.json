@@ -1,0 +1,23 @@
+{
+    "name": "danieljablonski-a/alteris",
+    "description": "Homework",
+    "type": "project",
+    "require-dev": {
+        "php": ">=7.4"
+    },
+    "license": "GNU",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Daniel Jablonski",
+            "email": "daniel@jablonski.ovh"
+        }
+    ],
+    "require": {
+        "phpunit/phpunit": "^9.5"
+    }
+}
