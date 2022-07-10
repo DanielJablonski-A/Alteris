@@ -8,7 +8,7 @@ Brak testów jednostkowych, zostawiam je na ten poniedziałek.
 
 Obecny rezultat programu:
 
-
+[]
 App\Controller\Fasada Object
 (
     [materialObj:protected] => App\Repository\MaterialClass Object
