@@ -9,7 +9,7 @@ class MaterialClass extends MaterialClassAbstract {
 
     function __construct() {}
 
-    protected function getMaterialInfo($materialName)
+    public function getMaterialInfo($materialName)
     {
         // może istnieć tylko jeden materiał o nazwie
         $key = $this->get_obj_key_by_name($this->MaterialsObjArr, $materialName);
@@ -19,7 +19,7 @@ class MaterialClass extends MaterialClassAbstract {
             return FALSE;
         }
     }
-    protected function getMaterialCount():int
+    function getMaterialCount():int
     {
       return count((array)$this->MaterialsObjArr);
     }
