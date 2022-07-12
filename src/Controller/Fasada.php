@@ -29,7 +29,7 @@ class Fasada
         $this->materialGroupsObj = $treeObj;
     }
 
-    public function addMaterial($newMaterialName, $newMaterialCode, $materialGroup, $materialUnit):bool
+    public function addMaterial(string $newMaterialName, string $newMaterialCode, string $materialGroup, string $materialUnit):bool
     {
         $returnsArr[] = $this->unitsObj->getUnitExist($materialUnit);
         $unitObj = $this->unitsObj->getUnitInfo($materialUnit);
@@ -44,7 +44,7 @@ class Fasada
         return TRUE;
     }
 
-    public function editMaterial($materialName, $materialGroup, $materialUnit):bool
+    public function editMaterial(string $materialName, string $materialGroup, string $materialUnit):bool
     {
         $returnsArr[] = $this->unitsObj->getUnitExist($materialUnit);
         $unitObj = $this->unitsObj->getUnitInfo($materialUnit);
@@ -59,22 +59,22 @@ class Fasada
         return TRUE;
     }
 
-    public function removeMaterial($MaterialName):void
+    public function removeMaterial(string $MaterialName):void
     {
         $this->materialObj->removeMaterial($MaterialName);
     }
 
-    public function removeMaterialGroup($materialGroupName):void
+    public function removeMaterialGroup(string $materialGroupName):void
     {
         $this->materialGroupsObj->removeMaterialGroup($materialGroupName);
     }
 
-    public function addUnit($newUnit, $newUnitShotcut):void
+    public function addUnit(string $newUnit, string $newUnitShotcut):void
     {
         $this->unitsObj->addUnit($newUnit, $newUnitShotcut);
     }
 
-    public function editUnit($unitName, $newUnitName, $newUnitShotcut):void
+    public function editUnit(string $unitName, string $newUnitName, string $newUnitShotcut):void
     {
         $this->unitsObj->editUnit($unitName, $newUnitName, $newUnitShotcut);
     }

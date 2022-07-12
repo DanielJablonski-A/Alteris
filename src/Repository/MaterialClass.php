@@ -5,13 +5,13 @@ namespace App\Repository;
 abstract class MaterialAbstract {
     abstract function getMaterialInfo(string $materialName);
     abstract function getMaterialCount();
-    abstract function addMaterial(string $materialName, string $materialCode, object $groupObj, UnitAbstract $unitObj);
-    abstract function editMaterial(string $materialName, MaterialGroupInterface $groupObj, UnitAbstract $unitObj);
+    abstract function addMaterial(string $materialName, string $materialCode, OneMaterialGroupClass $groupObj, object $unitObj);
+    abstract function editMaterial(string $materialName, OneMaterialGroupClass $groupObj, object $unitObj);
     abstract function removeMaterial(string $materialName);
 
-    function get_obj_key_by_name($obj, $materialName){
-        if (empty($obj)) return FALSE;
-        return array_search($materialName, array_column(json_decode(json_encode($obj),TRUE), 'nazwa'));
+    function get_obj_key_by_name(array $array, string $materialName){
+        if (empty($array)) return FALSE;
+        return array_search($materialName, array_column(json_decode(json_encode($array),TRUE), 'nazwa'));
     }
 }
 
@@ -25,7 +25,7 @@ class MaterialClass extends MaterialAbstract {
         // może istnieć tylko jeden materiał o nazwie
         $key = $this->get_obj_key_by_name($this->MaterialsObjArr, $materialName);
         if (is_int($key)){
-            return $materialName;
+            return $this->MaterialsObjArr[$key];
         } else {
             return FALSE;
         }
@@ -35,7 +35,8 @@ class MaterialClass extends MaterialAbstract {
       return count((array)$this->MaterialsObjArr);;
     }
 
-    function addMaterial($newMaterial, $newMaterialCode, $groupObj, $unitObj) {
+    function addMaterial(string $newMaterial, string $newMaterialCode, OneMaterialGroupClass $groupObj, object $unitObj):bool
+    {
         if (empty($newMaterial)) return FALSE;
         if (empty($newMaterialCode)) return FALSE;
         if ($this->getMaterialInfo($newMaterial)) return FALSE;
@@ -47,19 +48,21 @@ class MaterialClass extends MaterialAbstract {
         return TRUE;
     }
 
-    function editMaterial($materialName, $groupObj, $unitObj):bool
+    function editMaterial(string $materialName, OneMaterialGroupClass $groupObj, object $unitObj):bool
     {
         if (empty($materialName)) return FALSE;
-        if (!$this->getMaterialInfo($materialName)) return FALSE;
+        $materialObj = $this->getMaterialInfo($materialName);
+        if (!$materialObj) return FALSE;
         if (!$this->removeMaterial($materialName)) return FALSE;
         $this->MaterialsObjArr[] = (object)array('nazwa' => $materialName, 
+                                                 'kod' => $materialObj->kod,
                                                  'materialGroupObj' => $groupObj,
                                                  'unitObj' => $unitObj
                                                 );
         return TRUE;
     }
 
-    function removeMaterial($materialName):bool
+    function removeMaterial(string $materialName):bool
     {
         $key = $this->get_obj_key_by_name($this->MaterialsObjArr, $materialName);
         if (is_int($key)){
