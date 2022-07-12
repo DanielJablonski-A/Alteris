@@ -10,16 +10,16 @@ abstract class UnitAbstract {
     abstract function editUnit(string $unitName, string $newUnitName, string $newUnitShotcut);
     abstract function removeUnit(string $newUnit);
 
-    function get_obj_key_by_name($obj, $unitName){
+    function get_obj_key_by_name(array $array, string $unitName){
         if (empty($unitName)) return FALSE;
-        if (empty($obj)) return FALSE;
-        return array_search($unitName, array_column(json_decode(json_encode($obj),TRUE), 'nazwa'));
+        if (empty($array)) return FALSE;
+        return array_search($unitName, array_column(json_decode(json_encode($array),TRUE), 'nazwa'));
     }
 
-    function get_obj_key_by_shortcut($obj, $unitName){
+    function get_obj_key_by_shortcut(array $array, string $unitName){
       if (empty($unitName)) return FALSE;
-      if (empty($obj)) return FALSE;
-      return array_search($unitName, array_column(json_decode(json_encode($obj),TRUE), 'skrot'));
+      if (empty($array)) return FALSE;
+      return array_search($unitName, array_column(json_decode(json_encode($array),TRUE), 'skrot'));
   }
 }
 
@@ -28,7 +28,7 @@ class UnitClass extends UnitAbstract {
 
     function __construct() {}
 
-    function getUnitInfo($unitName){
+    function getUnitInfo(string $unitName){
         // może istnieć tylko jedna miara o nazwie
         $key = $this->get_obj_key_by_name($this->UnitsObjArr, $unitName);
         if (!is_int($key)) $key = $this->get_obj_key_by_shortcut($this->UnitsObjArr, $unitName);
@@ -39,7 +39,7 @@ class UnitClass extends UnitAbstract {
         }
     }
 
-    function getUnitExist($unitName){
+    function getUnitExist(string $unitName):bool{
       $key = $this->get_obj_key_by_name($this->UnitsObjArr, $unitName);
       if (!is_int($key)) $key = $this->get_obj_key_by_shortcut($this->UnitsObjArr, $unitName);
       if (is_int($key)){
@@ -49,17 +49,20 @@ class UnitClass extends UnitAbstract {
       }
   }
 
-    function getUnitCount() {
-      return count((array)$this->UnitsObjArr);;
+    function getUnitCount():int
+    {
+      return count((array)$this->UnitsObjArr);
     }
 
-    function addUnit($newUnit, $newUnitShortcut) {
+    function addUnit(string $newUnit, string $newUnitShortcut):bool
+    {
         if (empty($newUnitShortcut)) return FALSE;
         if ($this->getUnitInfo($newUnit)) return FALSE;
         $this->UnitsObjArr[] =  (object)array('nazwa' => $newUnit, 'skrot' => $newUnitShortcut);
         return TRUE;
     }
-    function editUnit($unitName, $newUnitName = '', $newUnitShotcut = ''){
+    function editUnit(string $unitName, string $newUnitName = '', string $newUnitShotcut = '')
+    {
         $key = $this->get_obj_key_by_name($this->UnitsObjArr, $unitName);
         if (is_int($key)){
             $arr = (array)$this->UnitsObjArr[$key];
@@ -70,10 +73,12 @@ class UnitClass extends UnitAbstract {
             return FALSE;
         }        
     }
-    function removeUnit($unitName) {
+    function removeUnit(string $unitName):bool
+    {
         $key = $this->get_obj_key_by_name($this->UnitsObjArr, $unitName);
         if (is_int($key)){
             unset($this->UnitsObjArr[$key]);
+            return TRUE;
         } else {
             return FALSE;
         }        

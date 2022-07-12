@@ -2,28 +2,30 @@
 declare(strict_types=1);
 namespace App\Repository;
 
-class OneMaterialGroupClass extends MaterialGroupInterface {
+class OneMaterialGroupClass extends MaterialGroupAbstract {
     private $nazwa;
 
-    function __construct($nazwa) {
+    function __construct(string $nazwa){
         $this->nazwa = $nazwa;
     }
     
-    function getMaterialGroupInfo($MaterialGroupToGet) {
+    function getMaterialGroupInfo(string $MaterialGroupToGet)
+    {
         if ($this->nazwa == $MaterialGroupToGet){
             return $this->nazwa;
         } else {
             return FALSE;
         }
     }
-    function getMaterialGroupExist($getMaterialGroupExist){
+    function getMaterialGroupExist(string $getMaterialGroupExist):bool
+    {
         if ($this->nazwa == $getMaterialGroupExist){
             return TRUE;
         } else {
             return FALSE;
         }      
     }
-    function editMaterialGroup($materialGroupName, $newMaterialGroupName){
+    function editMaterialGroup(string $materialGroupName, string $newMaterialGroupName){
         if ($this->nazwa == $materialGroupName){
             $this->nazwa = $newMaterialGroupName;
             return $newMaterialGroupName;
@@ -31,16 +33,20 @@ class OneMaterialGroupClass extends MaterialGroupInterface {
             return FALSE;
         }      
     }
-    function getMaterialsGroupCount() {
+    function getMaterialsGroupCount():bool
+    {
         return 1;
     }
-    function setMaterialsGroupCount($newCount) {
+    function setMaterialsGroupCount($newCount):bool
+    {
         return FALSE;
     }
-    function addMaterialGroup($oneMaterialGroup) {
+    function addMaterialGroup($oneMaterialGroup):bool
+    {
         return FALSE;
     }
-    function removeMaterialGroup($oneMaterialGroup) {
+    function removeMaterialGroup($oneMaterialGroup):bool
+    {
         return FALSE;
     }
 }

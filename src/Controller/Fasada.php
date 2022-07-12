@@ -12,10 +12,10 @@ use \UnexpectedValueException;
 
 class Fasada
 {
-    protected $materialObj;
-    protected $OneMaterialGroupClass;
-    protected $SeveralMaterialGroupsClass;
-    protected $unitsObj;
+    protected object $materialObj;
+    protected object $OneMaterialGroupClass;
+    protected object $SeveralMaterialGroupsClass;
+    protected object $unitsObj;
 
     function __construct()
     {
@@ -24,11 +24,12 @@ class Fasada
         $this->unitsObj = new UnitClass();
     }
 
-    public function addTreeObj($treeObj){
+    public function addTreeObj($treeObj):void
+    {
         $this->materialGroupsObj = $treeObj;
     }
 
-    public function addMaterial($newMaterialName, $newMaterialCode, $materialGroup, $materialUnit)
+    public function addMaterial($newMaterialName, $newMaterialCode, $materialGroup, $materialUnit):bool
     {
         $returnsArr[] = $this->unitsObj->getUnitExist($materialUnit);
         $unitObj = $this->unitsObj->getUnitInfo($materialUnit);
@@ -40,9 +41,10 @@ class Fasada
             // ROLLBACK
             throw new UnexpectedValueException('Materiał: '.$newMaterialName. ', nie został zapisany.');
         }
+        return TRUE;
     }
 
-    public function editMaterial($materialName, $materialGroup, $materialUnit)
+    public function editMaterial($materialName, $materialGroup, $materialUnit):bool
     {
         $returnsArr[] = $this->unitsObj->getUnitExist($materialUnit);
         $unitObj = $this->unitsObj->getUnitInfo($materialUnit);
@@ -54,23 +56,25 @@ class Fasada
         // ROLLBACK
         throw new UnexpectedValueException('Materiał: '.$materialName. ', nie został zaktualizowany.');
         }
+        return TRUE;
     }
 
-    public function removeMaterial($MaterialName)
+    public function removeMaterial($MaterialName):void
     {
         $this->materialObj->removeMaterial($MaterialName);
     }
 
-    public function removeMaterialGroup($materialGroupName){
+    public function removeMaterialGroup($materialGroupName):void
+    {
         $this->materialGroupsObj->removeMaterialGroup($materialGroupName);
     }
 
-    public function addUnit($newUnit, $newUnitShotcut)
+    public function addUnit($newUnit, $newUnitShotcut):void
     {
         $this->unitsObj->addUnit($newUnit, $newUnitShotcut);
     }
 
-    public function editUnit($unitName, $newUnitName, $newUnitShotcut)
+    public function editUnit($unitName, $newUnitName, $newUnitShotcut):void
     {
         $this->unitsObj->editUnit($unitName, $newUnitName, $newUnitShotcut);
     }

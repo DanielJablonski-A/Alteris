@@ -7,4 +7,3 @@ Brak testów jednostkowych, zostawiam je na ten poniedziałek.
 
 
 Obecny rezultat programu w pliku result.txt
-
