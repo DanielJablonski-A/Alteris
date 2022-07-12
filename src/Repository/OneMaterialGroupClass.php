@@ -9,7 +9,7 @@ class OneMaterialGroupClass extends MaterialGroupAbstract {
         $this->nazwa = $nazwa;
     }
     
-    function getMaterialGroupInfo(string $MaterialGroupToGet)
+    public function getMaterialGroupInfo(string $MaterialGroupToGet)
     {
         if ($this->nazwa == $MaterialGroupToGet){
             return $this->nazwa;
@@ -17,7 +17,7 @@ class OneMaterialGroupClass extends MaterialGroupAbstract {
             return FALSE;
         }
     }
-    function getMaterialGroupExist(string $getMaterialGroupExist):bool
+    public function getMaterialGroupExist(string $getMaterialGroupExist):bool
     {
         if ($this->nazwa == $getMaterialGroupExist){
             return TRUE;
@@ -25,7 +25,7 @@ class OneMaterialGroupClass extends MaterialGroupAbstract {
             return FALSE;
         }      
     }
-    function editMaterialGroup(string $materialGroupName, string $newMaterialGroupName){
+    public function editMaterialGroup(string $materialGroupName, string $newMaterialGroupName){
         if ($this->nazwa == $materialGroupName){
             $this->nazwa = $newMaterialGroupName;
             return $newMaterialGroupName;
@@ -33,19 +33,19 @@ class OneMaterialGroupClass extends MaterialGroupAbstract {
             return FALSE;
         }      
     }
-    function getMaterialsGroupCount():bool
+    public function getMaterialsGroupCount():bool
     {
         return 1;
     }
-    function setMaterialsGroupCount($newCount):bool
+    public function setMaterialsGroupCount($newCount):bool
     {
         return FALSE;
     }
-    function addMaterialGroup($oneMaterialGroup):bool
+    public function addMaterialGroup($oneMaterialGroup):bool
     {
         return FALSE;
     }
-    function removeMaterialGroup($oneMaterialGroup):bool
+    public function removeMaterialGroup($oneMaterialGroup):bool
     {
         return FALSE;
     }

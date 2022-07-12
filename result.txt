@@ -7,6 +7,7 @@ App\Controller\Fasada Object
                     [2] => stdClass Object
                         (
                             [nazwa] => len
+                            [kod] => kod3
                             [materialGroupObj] => App\Repository\OneMaterialGroupClass Object
                                 (
                                     [nazwa:App\Repository\OneMaterialGroupClass:private] => roślinne
@@ -143,8 +144,6 @@ App\Controller\Fasada Object
 
         )
 
-    [OneMaterialGroupClass:protected] => 
-    [SeveralMaterialGroupsClass:protected] => 
     [unitsObj:protected] => App\Repository\UnitClass Object
         (
             [UnitsObjArr:App\Repository\UnitClass:private] => Array

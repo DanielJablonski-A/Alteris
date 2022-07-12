@@ -2,17 +2,18 @@
 declare(strict_types=1);
 namespace App\Repository;
 
-abstract class MaterialGroupAbstract {
+interface MaterialGroupInterface {
+    public function editMaterialGroup(string $materialGroupName, string $newMaterialGroupName);
+    public function addMaterialGroup(MaterialGroupAbstract $oneMaterialGroup);
+    public function removeMaterialGroup(string $oneMaterialGroup);
+    public function getMaterialGroupInfo(string $materialGroupName);
+    public function getMaterialGroupExist(string $materialGroupName);
+    public function getMaterialsGroupCount();
+    public function setMaterialsGroupCount(int $new_count);
+}
 
-    abstract function getMaterialGroupInfo(string $materialGroupName);
-    abstract function getMaterialGroupExist(string $materialGroupName);
-    abstract function editMaterialGroup(string $materialGroupName, string $newMaterialGroupName);
-    abstract function getMaterialsGroupCount();
-    abstract function setMaterialsGroupCount(int $new_count);
-    abstract function addMaterialGroup(MaterialGroupAbstract $oneMaterialGroup);
-    abstract function removeMaterialGroup(string $oneMaterialGroup);
-
-    function treeGet(array $tree, string $searchValue, $return=[])
+abstract class MaterialGroupAbstract implements MaterialGroupInterface {
+    protected function treeGet(array $tree, string $searchValue, $return=[])
     {
         foreach($tree as $branch => $twig){
             if (is_object($twig)){

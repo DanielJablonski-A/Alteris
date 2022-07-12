@@ -32,7 +32,7 @@ class SeveralMaterialGroupsClass extends MaterialGroupAbstract {
       }
     }
 
-    function getMaterialGroupExist(string $MaterialGroupToGet):bool
+    public function getMaterialGroupExist(string $MaterialGroupToGet):bool
     {
         $obj = $this->treeGet($this->MaterialsGroupObj, $MaterialGroupToGet);
         if (!empty($obj) && !empty($obj) && is_object($obj)){

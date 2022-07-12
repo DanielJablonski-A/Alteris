@@ -4,9 +4,6 @@ namespace App\Controller;
 
 use App\Repository\MaterialClass;
 use App\Repository\UnitClass;
-use App\Repository\MaterialGroupInterface;
-use App\Repository\OneMaterialGroupClass;
-use App\Repository\SeveralMaterialGroupsClass;
 use \stdClass;
 use \UnexpectedValueException;
 

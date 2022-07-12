@@ -6,7 +6,6 @@ require 'vendor/autoload.php';
 use App\Controller\Fasada;
 use App\Repository\MaterialClass;
 use App\Repository\UnitClass;
-use App\Repository\MaterialGroupAbstract;
 use App\Repository\OneMaterialGroupClass;
 use App\Repository\SeveralMaterialGroupsClass;
 
