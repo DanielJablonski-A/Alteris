@@ -21,9 +21,11 @@ final class MaterialFactory
             case 'addMaterial':
                 return new MaterialAdd($this->materialObj, $this->materialGroupsObj, $this->unitsObj);
                 break;
+
             case 'editMaterial':
                 return new MaterialEdit($this->materialObj, $this->materialGroupsObj, $this->unitsObj);
                 break;
+                
             default:
                 throw new InvalidArgumentException('Ta fabryka tego nie produkuje');
         };

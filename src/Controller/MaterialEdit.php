@@ -1,16 +1,18 @@
 <?php
 declare(strict_types=1);
 namespace App\Controller;
+use App\Repository\MaterialClass;
+use App\Repository\SeveralMaterialGroupsClass;
+use App\Repository\UnitClass;
 
-class MaterialEdit {
-    
-    function __construct($materialObj, $materialGroupsObj, $unitsObj){
+class MaterialEdit implements MaterialEditInterface {
+    function __construct(MaterialClass $materialObj, SeveralMaterialGroupsClass $materialGroupsObj, UnitClass $unitsObj){
         $this->materialObj = $materialObj; 
         $this->materialGroupsObj = $materialGroupsObj;
         $this->unitsObj = $unitsObj;
     }
 
-    function editMaterial(string $materialName, string $materialGroup, string $materialUnit)
+    public function editMaterial(string $materialName, string $materialGroup, string $materialUnit):bool
     {
         $returnsArr[] = $this->unitsObj->getUnitExist($materialUnit);
         $unitObj = $this->unitsObj->getUnitInfo($materialUnit);

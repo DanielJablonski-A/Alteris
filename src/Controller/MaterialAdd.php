@@ -1,16 +1,19 @@
 <?php
 declare(strict_types=1);
 namespace App\Controller;
+use App\Repository\MaterialClass;
+use App\Repository\SeveralMaterialGroupsClass;
+use App\Repository\UnitClass;
 
-class MaterialAdd {
+class MaterialAdd implements MaterialAddInterface {
 
-    function __construct($materialObj, $materialGroupsObj, $unitsObj){
+    function __construct(MaterialClass $materialObj, SeveralMaterialGroupsClass $materialGroupsObj, UnitClass $unitsObj){
         $this->materialObj = $materialObj; 
         $this->materialGroupsObj = $materialGroupsObj;
         $this->unitsObj = $unitsObj;
     }
 
-    function addMaterial(string $newMaterialName, string $newMaterialCode, string $materialGroup, string $materialUnit)
+    public function addMaterial(string $newMaterialName, string $newMaterialCode, string $materialGroup, string $materialUnit):bool
     {
         $returnsArr[] = $this->unitsObj->getUnitExist($materialUnit);
         $unitObj = $this->unitsObj->getUnitInfo($materialUnit);
