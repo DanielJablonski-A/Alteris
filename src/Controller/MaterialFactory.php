@@ -19,11 +19,11 @@ final class MaterialFactory
     {
         switch($type){
             case 'addMaterial':
-                return new MaterialAdd($this->materialObj, $this->materialGroupsObj, $this->unitsObj);
+                return new Material($this->materialObj, $this->materialGroupsObj, $this->unitsObj);
                 break;
 
             case 'editMaterial':
-                return new MaterialEdit($this->materialObj, $this->materialGroupsObj, $this->unitsObj);
+                return new Material($this->materialObj, $this->materialGroupsObj, $this->unitsObj);
                 break;
                 
             default:
