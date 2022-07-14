@@ -4,7 +4,7 @@ namespace App\Repository;
 
 interface MaterialGroupInterface {
     public function editMaterialGroup(string $materialGroupName, string $newMaterialGroupName);
-    public function addMaterialGroup(MaterialGroupAbstract $oneMaterialGroup):int;
+    public function addMaterialGroup(MaterialGroupInterface $oneMaterialGroup):int;
     public function removeMaterialGroup(string $oneMaterialGroup):bool;
     public function getMaterialGroupInfo(string $materialGroupName);
     public function getMaterialGroupExist(string $materialGroupName):bool;

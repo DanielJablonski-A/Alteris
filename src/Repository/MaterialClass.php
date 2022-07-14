@@ -25,7 +25,7 @@ class MaterialClass extends MaterialClassAbstract {
       return count((array)$this->MaterialsObjArr);
     }
 
-    public function addMaterial(string $newMaterial, string $newMaterialCode, MaterialGroupAbstract $groupObj, object $unitObj):bool
+    public function addMaterial(string $newMaterial, string $newMaterialCode, MaterialGroupInterface $groupObj, object $unitObj):bool
     {
         if (empty($newMaterial)) return FALSE;
         if (empty($newMaterialCode)) return FALSE;
@@ -38,7 +38,7 @@ class MaterialClass extends MaterialClassAbstract {
         return TRUE;
     }
 
-    public function editMaterial(string $materialName, MaterialGroupAbstract $groupObj, object $unitObj):bool
+    public function editMaterial(string $materialName, MaterialGroupInterface $groupObj, object $unitObj):bool
     {
         if (empty($materialName)) return FALSE;
         $materialObj = $this->getMaterialInfo($materialName);

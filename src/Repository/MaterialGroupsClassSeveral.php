@@ -48,7 +48,7 @@ class MaterialGroupsClassSeveral extends MaterialGroupAbstract {
           print_r ($this->MaterialsGroupObj);
     }
   
-    public function addMaterialGroup(MaterialGroupAbstract $oneMaterialGroup):int
+    public function addMaterialGroup(MaterialGroupInterface $oneMaterialGroup):int
     {
         $this->setMaterialsGroupCount($this->getMaterialsGroupCount() + 1);
         $this->MaterialsGroupObj[$this->group_nazwa][$this->getMaterialsGroupCount()] = $oneMaterialGroup;

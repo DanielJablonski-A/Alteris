@@ -4,7 +4,7 @@ use InvalidArgumentException;
  
 final class MaterialFactory
 {
-    function __construct(MaterialClass $materialObj, MaterialGroupAbstract $materialGroupsObj, UnitClassAbstract $unitsObj){
+    function __construct(MaterialClass $materialObj, MaterialGroupInterface $materialGroupsObj, UnitClassInterface $unitsObj){
         $this->materialObj = $materialObj; 
         $this->materialGroupsObj = $materialGroupsObj;
         $this->unitsObj = $unitsObj;

@@ -4,7 +4,7 @@ namespace App\Repository;
 
 class MaterialFactoryClass implements MaterialFactoryInterface {
 
-    function __construct(MaterialClass $materialObj, MaterialGroupAbstract $materialGroupsObj, UnitClassAbstract $unitsObj){
+    function __construct(MaterialClassInterface $materialObj, MaterialGroupInterface $materialGroupsObj, UnitClassInterface $unitsObj){
         $this->materialObj = $materialObj; 
         $this->materialGroupsObj = $materialGroupsObj;
         $this->unitsObj = $unitsObj;
