@@ -2,7 +2,7 @@
 declare(strict_types=1);
 namespace App\Repository;
 
-class SeveralMaterialGroupsClass extends MaterialGroupAbstract {
+class MaterialGroupsClassSeveral extends MaterialGroupAbstract {
     private string $group_nazwa;
     private array $MaterialsGroupObj = array();
     private int $MaterialsGroupCount;

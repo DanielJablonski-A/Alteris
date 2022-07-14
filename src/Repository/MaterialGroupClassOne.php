@@ -2,7 +2,7 @@
 declare(strict_types=1);
 namespace App\Repository;
 
-class OneMaterialGroupClass extends MaterialGroupAbstract {
+class MaterialGroupClassOne extends MaterialGroupAbstract {
     private $nazwa;
 
     function __construct(string $nazwa){
@@ -33,15 +33,14 @@ class OneMaterialGroupClass extends MaterialGroupAbstract {
             return FALSE;
         }      
     }
-    public function getMaterialsGroupCount():bool
+    public function getMaterialsGroupCount():int
     {
         return 1;
     }
-    public function setMaterialsGroupCount($newCount):bool
+    public function setMaterialsGroupCount($newCount):void
     {
-        return FALSE;
     }
-    public function addMaterialGroup($oneMaterialGroup):bool
+    public function addMaterialGroup($oneMaterialGroup):int
     {
         return FALSE;
     }

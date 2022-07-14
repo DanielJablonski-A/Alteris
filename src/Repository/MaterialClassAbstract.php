@@ -2,13 +2,7 @@
 declare(strict_types=1);
 namespace App\Repository;
 
-interface MaterialInterface{
-    public function addMaterial(string $materialName, string $materialCode, OneMaterialGroupClass $groupObj, object $unitObj);
-    public function editMaterial(string $materialName, OneMaterialGroupClass $groupObj, object $unitObj);
-    public function removeMaterial(string $materialName);
-}
-
-abstract class MaterialClassAbstract implements MaterialInterface {
+abstract class MaterialClassAbstract implements MaterialClassInterface {
     abstract protected function getMaterialInfo(string $materialName);
     abstract protected function getMaterialCount();
 

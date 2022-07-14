@@ -2,13 +2,7 @@
 declare(strict_types=1);
 namespace App\Repository;
 
-interface UnitInterface{
-    public function addUnit(string $newUnitName,string $newUnitShotcut);
-    public function editUnit(string $unitName, string $newUnitName, string $newUnitShotcut);
-    public function removeUnit(string $newUnit);
-}
-
-abstract class UnitClassAbstract implements UnitInterface {
+abstract class UnitClassAbstract implements UnitClassInterface {
     abstract function getUnitInfo(string $unitName);
     abstract function getUnitExist(string $unitShotcut);
     abstract function getUnitCount();

@@ -1,13 +1,10 @@
 <?php
 declare(strict_types=1);
-namespace App\Controller;
-use App\Repository\MaterialClass;
-use App\Repository\SeveralMaterialGroupsClass;
-use App\Repository\UnitClass;
+namespace App\Repository;
 
-class Material implements MaterialInterface {
+class MaterialFactoryClass implements MaterialFactoryInterface {
 
-    function __construct(MaterialClass $materialObj, SeveralMaterialGroupsClass $materialGroupsObj, UnitClass $unitsObj){
+    function __construct(MaterialClass $materialObj, MaterialGroupAbstract $materialGroupsObj, UnitClassAbstract $unitsObj){
         $this->materialObj = $materialObj; 
         $this->materialGroupsObj = $materialGroupsObj;
         $this->unitsObj = $unitsObj;

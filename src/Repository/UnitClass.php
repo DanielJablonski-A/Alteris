@@ -2,8 +2,6 @@
 declare(strict_types=1);
 namespace App\Repository;
 
-use App\Repository\UnitClassAbstract;
-
 class UnitClass extends UnitClassAbstract {
     private $UnitsObjArr = array();
 
@@ -42,7 +40,7 @@ class UnitClass extends UnitClassAbstract {
         $this->UnitsObjArr[] =  (object)array('nazwa' => $newUnit, 'skrot' => $newUnitShortcut);
         return TRUE;
     }
-    public function editUnit(string $unitName, string $newUnitName = '', string $newUnitShotcut = '')
+    public function editUnit(string $unitName, string $newUnitName = '', string $newUnitShotcut = ''):bool
     {
         $key = $this->get_obj_key_by_name($this->UnitsObjArr, $unitName);
         if (is_int($key)){
@@ -50,6 +48,7 @@ class UnitClass extends UnitClassAbstract {
             if (!empty($newUnitName)) $arr['nazwa'] = $newUnitName;
             if (!empty($newUnitShotcut)) $arr['skrot'] = $newUnitShotcut;
             $this->UnitsObjArr[$key] =  (object)$arr;
+            return TRUE;
         } else {
             return FALSE;
         }        

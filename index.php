@@ -6,8 +6,8 @@ require 'vendor/autoload.php';
 use App\Controller\Fasada;
 use App\Repository\MaterialClass;
 use App\Repository\UnitClass;
-use App\Repository\OneMaterialGroupClass;
-use App\Repository\SeveralMaterialGroupsClass;
+use App\Repository\MaterialGroupClassOne;
+use App\Repository\MaterialGroupsClassSeveral;
 
 $dm = new Fasada();
 
@@ -21,22 +21,22 @@ $dm->editUnit('metry2', 'metry', 'm');
 
 // tworze sobie dowolnie grupy i podgrupy Materiałów:
 // można się bawić dowolnie, najażniejsze by przekazać do objektu $dm finalne drzewo
-$leaf1 = new OneMaterialGroupClass('roślinne_zle');
+$leaf1 = new MaterialGroupClassOne('roślinne_zle');
 $leaf1->editMaterialGroup('roślinne_zle', 'roślinne'); // edytuje leaf
 $leaf1->getMaterialGroupExist('roślinne');
-$leaf2 = new OneMaterialGroupClass('zwierzęce');
-$branch1 = new SeveralMaterialGroupsClass('naturalne_zle'); 
+$leaf2 = new MaterialGroupClassOne('zwierzęce');
+$branch1 = new MaterialGroupsClassSeveral('naturalne_zle'); 
 $branch1->editMaterialGroup('naturalne_zle', 'naturalne'); // edytuje gałąź
 $branch1->addMaterialGroup($leaf1);
 $branch1->addMaterialGroup($leaf2);
-$leaf1 = new OneMaterialGroupClass('sztuczne');
-$leaf2 = new OneMaterialGroupClass('syntetyczne');
-$leaf3 = new OneMaterialGroupClass('nieorganiczne');
-$branch2 = new SeveralMaterialGroupsClass('chemiczne');
+$leaf1 = new MaterialGroupClassOne('sztuczne');
+$leaf2 = new MaterialGroupClassOne('syntetyczne');
+$leaf3 = new MaterialGroupClassOne('nieorganiczne');
+$branch2 = new MaterialGroupsClassSeveral('chemiczne');
 $branch2->addMaterialGroup($leaf1);
 $branch2->addMaterialGroup($leaf2);
 $branch2->addMaterialGroup($leaf3);
-$tree = new SeveralMaterialGroupsClass('włókna');
+$tree = new MaterialGroupsClassSeveral('włókna');
 $tree->addMaterialGroup($branch1);
 $tree->addMaterialGroup($branch2);
 $dm->addTreeObj($tree);
