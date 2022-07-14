@@ -6,6 +6,11 @@ class MaterialGroupClassOne extends MaterialGroupAbstract {
     private $nazwa;
 
     function __construct(string $nazwa){
+        $this->setNazwa($nazwa);
+    }
+
+    public function setNazwa(string $nazwa):void
+    {
         $this->nazwa = $nazwa;
     }
     
@@ -25,10 +30,10 @@ class MaterialGroupClassOne extends MaterialGroupAbstract {
             return FALSE;
         }      
     }
-    public function editMaterialGroup(string $materialGroupName, string $newMaterialGroupName){
+    public function editMaterialGroup(string $materialGroupName, string $newMaterialGroupName):bool{
         if ($this->nazwa == $materialGroupName){
-            $this->nazwa = $newMaterialGroupName;
-            return $newMaterialGroupName;
+            $this->setNazwa($newMaterialGroupName);
+            return TRUE;
         } else {
             return FALSE;
         }      

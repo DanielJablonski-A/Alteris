@@ -9,8 +9,13 @@ class MaterialGroupsClassSeveral extends MaterialGroupAbstract {
 
     public function __construct(string $group_nazwa)
     {
-        $this->group_nazwa = $group_nazwa;
+        $this->setNazwa($group_nazwa);
         $this->setMaterialsGroupCount(-1);
+    }
+
+    public function setNazwa(string $group_nazwa):void
+    {
+        $this->group_nazwa = $group_nazwa;
     }
     
     public function getMaterialsGroupCount():int
@@ -55,13 +60,13 @@ class MaterialGroupsClassSeveral extends MaterialGroupAbstract {
         return $this->getMaterialsGroupCount();
     }
 
-    public function editMaterialGroup(string $materialGroupName, string $newMaterialGroupName){
-        $this->group_nazwa = $newMaterialGroupName;
-        if (isset($this->MaterialsGroupObj[$materialGroupName]) && !empty($this->MaterialsGroupObj[$materialGroupName])){
-            $this->MaterialsGroupObj[$newMaterialGroupName] = $this->MaterialsGroupObj[$materialGroupName];
-            unset($this->MaterialsGroupObj[$materialGroupName]);
-        }
-        return TRUE;     
+    public function editMaterialGroup(string $materialGroupName, string $newMaterialGroupName):bool{
+        if ($this->group_nazwa == $materialGroupName){
+            $this->setNazwa($newMaterialGroupName);
+            return TRUE;
+        } else {
+            return FALSE;
+        }      
     }
 
     public function removeMaterialGroup(string $materialGroupName):bool

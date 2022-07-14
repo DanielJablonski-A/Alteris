@@ -62,9 +62,9 @@ class Fasada
     /**
     * Usuwam materiał który wcześniej mi fabryka przygotowała
     */
-    public function removeMaterial(string $MaterialName):void
+    public function removeMaterial(string $MaterialName):bool
     {
-        $this->materialObj->removeMaterial($MaterialName);
+        return $this->materialObj->removeMaterial($MaterialName);
     }
 
 
@@ -80,18 +80,18 @@ class Fasada
    /**
    * Dodaje nową miarę do obiektu Unit
    */ 
-    public function addUnit(string $newUnit, string $newUnitShotcut):void
+    public function addUnit(string $newUnit, string $newUnitShotcut):bool
     {
-        $this->unitsObj->addUnit($newUnit, $newUnitShotcut);
+        return $this->unitsObj->addUnit($newUnit, $newUnitShotcut);
     }
 
 
     /**
     * Edytuję miarę w obiekcie Unit
     */ 
-    public function editUnit(string $unitName, string $newUnitName, string $newUnitShotcut):void
+    public function editUnit(string $unitName, string $newUnitName, string $newUnitShotcut):bool
     {
-        $this->unitsObj->editUnit($unitName, $newUnitName, $newUnitShotcut);
+        return $this->unitsObj->editUnit($unitName, $newUnitName, $newUnitShotcut);
     }
 
 
