@@ -5,6 +5,7 @@ namespace App\Repository;
 abstract class MaterialGroupAbstract implements MaterialGroupInterface {
     protected function treeGet(array $tree, string $searchValue, $return=[])
     {
+        if (key($tree) === $searchValue) return $tree;
         foreach($tree as $branch => $twig){
             if (is_object($twig)){
                 $twigArr = (array)$twig;

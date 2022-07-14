@@ -30,27 +30,19 @@ class MaterialGroupsClassSeveral extends MaterialGroupAbstract {
     public function getMaterialGroupInfo(string $MaterialGroupToGet) 
     {
         $obj = $this->treeGet($this->MaterialsGroupObj, $MaterialGroupToGet);
-        if (!empty($obj) && !empty($obj) && is_object($obj)){
-            return $obj;
-        } else {
-            return FALSE;
-      }
+        if (empty($obj)) return FALSE;
+        if (is_array($obj))$obj = (object)$obj;
+        return $obj;
     }
 
     public function getMaterialGroupExist(string $MaterialGroupToGet):bool
     {
         $obj = $this->treeGet($this->MaterialsGroupObj, $MaterialGroupToGet);
-        if (!empty($obj) && !empty($obj) && is_object($obj)){
+        if (!empty($obj) && is_object($obj)){
             return TRUE;
         } else {
             return FALSE;
         }
-    }
-  
-    public function getAllMaterialGroup()
-    { 
-        if ($this->getMaterialsGroupCount() < 1) return FALSE;
-          print_r ($this->MaterialsGroupObj);
     }
   
     public function addMaterialGroup(MaterialGroupInterface $oneMaterialGroup):int
