@@ -28,7 +28,7 @@ final class indexTest extends TestCase {
         self::assertTrue($branch1->editMaterialGroup('naturalne_zle', 'naturalne'));
         self::assertEquals(0, $branch1->addMaterialGroup($leaf1));
         self::assertEquals(1, $branch1->addMaterialGroup($leaf1));
-        self::assertIsArray($branch1->getMaterialGroupInfo('naturalne'));
+        self::assertIsObject($branch1->getMaterialGroupInfo('naturalne'));
         $dm->addTreeObj($branch1);
 
         // testuje Materiał
