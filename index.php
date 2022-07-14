@@ -39,7 +39,7 @@ $branch2->addMaterialGroup($leaf3);
 $tree = new MaterialGroupsClassSeveral('włókna');
 $tree->addMaterialGroup($branch1);
 $tree->addMaterialGroup($branch2);
-print_r($tree->getMaterialGroupInfo('chemiczne')); //pkt.8
+//print_r($tree->getMaterialGroupInfo('chemiczne')); //pkt.8 odkomentować
 $dm->addTreeObj($tree);
 
 
